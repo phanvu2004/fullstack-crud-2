@@ -10,7 +10,7 @@
     "serve:ssr:fullstack-crud": "node dist/fullstack-crud/server/server.mjs"
   },
   "engines": {
-    "node": "18.x"
+    "node": "20.x"
   },
   "private": true,
   "dependencies": {
