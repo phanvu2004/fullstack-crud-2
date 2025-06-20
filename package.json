@@ -9,9 +9,6 @@
     "test": "ng test",
     "serve:ssr:fullstack-crud": "node dist/fullstack-crud/server/server.mjs"
   },
-  "engines": {
-    "node": "20.x"
-  },
   "private": true,
   "dependencies": {
     "@angular/animations": "^17.3.0",
