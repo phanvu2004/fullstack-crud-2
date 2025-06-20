@@ -3,7 +3,14 @@ backend:
   phases:
     build:
       commands:
-        - amplifyPush --simple
+        - export NVM_DIR="$HOME/.nvm"
+        - '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"'
+        - nvm install 20
+        - nvm use 20
+        - node -v
+        - npm install -g @aws-amplify/cli
+        - yarn install --frozen-lockfile
+        - yarn ampx pipeline-deploy --branch $AWS_BRANCH --app-id $AWS_APP_ID
 frontend:
   phases:
     preBuild:
@@ -13,7 +20,7 @@ frontend:
         - nvm install 20
         - nvm use 20
         - node -v
-        - yarn install --frozen-lockfile --ignore-engines
+        - yarn install --frozen-lockfile
     build:
       commands:
         - yarn build
@@ -26,3 +33,8 @@ frontend:
       - node_modules/**/*
       - ~/.npm/**/*
       - ~/.cache/yarn/**/*
+  customHeaders:
+    - pattern: '**/*'
+      headers:
+        - key: 'Cache-Control'
+          value: 'max-age=0, no-cache, no-store, must-revalidate'
