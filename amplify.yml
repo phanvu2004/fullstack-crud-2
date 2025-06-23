@@ -1,15 +1,20 @@
 version: 1
 backend:
   phases:
+    preBuild:
+      commands:
+        - nvm use 20 || nvm install 20
     build:
       commands:
         - npm install -g @aws-amplify/cli
         - npm install
-        - npx ampx generate
+        - npx ampx generate outputs
+        - npx ampx generate graphql-client-code
 frontend:
   phases:
     preBuild:
       commands:
+        - nvm use 20 || nvm install 20
         - npm install
     build:
       commands:
