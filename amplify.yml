@@ -8,8 +8,7 @@ backend:
       commands:
         - npm install -g @aws-amplify/cli
         - npm install --legacy-peer-deps
-        - npx ampx generate outputs
-        - npx ampx generate graphql-client-code
+        - echo "Skipping backend deployment in CI/CD pipeline"
 frontend:
   phases:
     preBuild:
